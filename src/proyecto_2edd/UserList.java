@@ -120,7 +120,6 @@ public class UserList {
             temp2.setpPrev(e.getpPrev());
             this.Liberar(e);
         }
-        //este comentario es para quitarlo
     }
     
     public String Imprimir(UserList list){
