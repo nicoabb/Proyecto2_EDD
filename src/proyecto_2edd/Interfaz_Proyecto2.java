@@ -41,6 +41,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        fondopestana1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         browsebutton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -56,15 +57,21 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         addbutton = new javax.swing.JButton();
         boxelimuser = new javax.swing.JComboBox<>();
         deletebutton = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Inicio");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        fondopestana1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
+        jPanel1.add(fondopestana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Inicio", jPanel1);
 
@@ -76,12 +83,14 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 browsebuttonActionPerformed(evt);
             }
         });
-        jPanel2.add(browsebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 80, -1));
+        jPanel2.add(browsebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Menu de Usuarios");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
+        ExploradorArchivo.setForeground(new java.awt.Color(0, 51, 102));
         ExploradorArchivo.setText("Cargue archivo de formato \"csv.\"");
         ExploradorArchivo.setEnabled(false);
         ExploradorArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -89,34 +98,38 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 ExploradorArchivoActionPerformed(evt);
             }
         });
-        jPanel2.add(ExploradorArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, -1));
+        jPanel2.add(ExploradorArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 340, -1));
 
         jTextPane1.setEnabled(false);
         jScrollPane1.setViewportView(jTextPane1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 440, 70));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 440, 90));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Ver usuarios existentes");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 30));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setText("Usuarios Existentes");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Eliminar usuario");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Agregar nuevo usuario: inserte nombre y nivel de prioridad");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Cargar archivo con la información");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 30));
 
         fieldnewname.setText("Inserte nombre de Usuario");
-        jPanel2.add(fieldnewname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 200, -1));
+        jPanel2.add(fieldnewname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, -1));
 
         boxprioridades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(boxprioridades, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 130, -1));
+        jPanel2.add(boxprioridades, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 130, -1));
 
         addbutton.setText("Agregar");
         addbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -124,10 +137,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 addbuttonActionPerformed(evt);
             }
         });
-        jPanel2.add(addbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 80, -1));
+        jPanel2.add(addbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 80, -1));
 
         boxelimuser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(boxelimuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 340, -1));
+        jPanel2.add(boxelimuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 340, -1));
 
         deletebutton.setText("Eliminar");
         deletebutton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +148,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 deletebuttonActionPerformed(evt);
             }
         });
-        jPanel2.add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 80, -1));
+        jPanel2.add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 80, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
+        jPanel2.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Usuarios", jPanel2);
 
@@ -146,11 +162,11 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -271,6 +287,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JButton browsebutton;
     private javax.swing.JButton deletebutton;
     private javax.swing.JTextField fieldnewname;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel fondopestana1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
