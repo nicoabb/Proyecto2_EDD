@@ -180,7 +180,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             return;
         }
         txt.writecsv(list);
-        String data = list.Imprimir(list);
+        String data = list.Imprimir();
         jTextPane1.setText(data);
     }
     
@@ -192,12 +192,12 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         list.setFilepath(filename);
         if(filename.contains(".csv")){
             txt.readcsv(list, list.getFilepath());
-            Usuario aux = list.getpFirst();
+            ListNode aux = list.getpFirst();
             while(aux != null){
                 boxelimuser.addItem(aux.getNombre());
                 aux = aux.getpNext();
             }
-            String data = list.Imprimir(list);
+            String data = list.Imprimir();
             jTextPane1.setText(data);
             ExploradorArchivo.setText("Datos de usuario cargados");
         }else{

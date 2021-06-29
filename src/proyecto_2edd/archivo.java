@@ -37,7 +37,7 @@ public class archivo {
     public void writecsv(UserList list){
         try{
             String infotxt = "";
-            Usuario aux = list.getpFirst();
+            ListNode aux = list.getpFirst();
             while(aux != null){
                 infotxt += (aux.getNombre() + "," + aux.getPrioridad() + "\n");
                 aux = aux.getpNext();

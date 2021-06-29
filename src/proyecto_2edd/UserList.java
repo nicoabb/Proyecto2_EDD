@@ -10,10 +10,11 @@ package proyecto_2edd;
  * @author Nicolás Briceño
  */
 public class UserList {
-    private Usuario pFirst;
-    private Usuario pLast;
+    private ListNode pFirst;
+    private ListNode pLast;
     private int size;
     private String filepath;
+    
     
     public UserList(){
         this.pFirst = null;
@@ -22,19 +23,19 @@ public class UserList {
         this.filepath = "";
     }
 
-    public Usuario getpFirst() {
+    public ListNode getpFirst() {
         return pFirst;
     }
 
-    public void setpFirst(Usuario pFirst) {
+    public void setpFirst(ListNode pFirst) {
         this.pFirst = pFirst;
     }
 
-    public Usuario getpLast() {
+    public ListNode getpLast() {
         return pLast;
     }
 
-    public void setpLast(Usuario pLast) {
+    public void setpLast(ListNode pLast) {
         this.pLast = pLast;
     }
 
@@ -58,7 +59,7 @@ public class UserList {
         return pFirst == null;
     }
     
-    public void Liberar(Usuario user){
+    public void Liberar(ListNode user){
         user.setNombre("");
         user.setPrioridad("");
         user.setpNext(null);
@@ -66,16 +67,14 @@ public class UserList {
     }
     
     public void Insertar(String nombre, String prioridad){
-        Usuario uNew = new Usuario();
-        uNew.setNombre(nombre);
-        uNew.setPrioridad(prioridad);
+        ListNode uNew = new ListNode(nombre, prioridad);
         Boolean existe = false;
         
         if(isEmpty()){
             pFirst = uNew;
             pLast = uNew;
         }else{
-            Usuario aux = pFirst;
+            ListNode aux = pFirst;
             if (aux.getNombre().equals(nombre)){//revisa el nombre del primer elemento
                 existe = true;
             }
@@ -93,13 +92,51 @@ public class UserList {
                 pLast = uNew;
                 }
         }
-        size +=1;
+        size ++;
     }
     
-    public Usuario Buscar(String nombre){
-        Usuario auxfirst = this.getpFirst();
-        Usuario auxlast = this.getpLast();
-        Usuario temp;
+    public void Insertar(String username, String docname, String size, String type){//INSERTAR PARA DOCUMENTOS
+        ListNode uNew = new ListNode(docname, size, type);
+        Boolean existe = false;
+        
+        ListNode user = Buscar(username);
+        
+        if (user!=null){
+            
+            UserList list = user.getDocs();
+            if(list.isEmpty()){
+                list.setpFirst(uNew);
+                list.setpLast(uNew);
+            }else{
+                ListNode aux = list.getpFirst();
+                if (aux.getNombre().equals(docname)){//revisa el nombre del primer elemento
+                    existe = true;
+                }
+                while(aux.getpNext()!=null){ //recorre lista buscando el nombre
+                    aux = aux.getpNext();
+                    if(aux.getNombre().equals(docname)){
+                        existe = true;
+                    }
+                }
+
+                if (!existe){
+                    //si no existe el nombre, inserta el nuevo doc al final
+                    aux.setpNext(uNew);
+                    uNew.setpPrev(aux);
+                    list.setpLast(uNew);
+                    }
+            }
+            int listsize = list.getSize();
+            list.setSize(listsize++);
+        }else{
+           //no existe el usuario 
+        }
+    }
+    
+    public ListNode Buscar(String nombre){
+        ListNode auxfirst = this.getpFirst();
+        ListNode auxlast = this.getpLast();
+        ListNode temp;
         while(auxfirst != null && auxlast != null){
             if(nombre.equals(auxfirst.getNombre())){
                 temp = auxfirst;
@@ -115,32 +152,73 @@ public class UserList {
         return null;
     }
     
-    public void Eliminar(String nombre){
-        Usuario e = Buscar(nombre);
+    public void Eliminar(String nombre){ //ELIMINAR PARA USUARIOS
+        ListNode e = Buscar(nombre);
         if(e == pFirst){
-            Usuario temp = e.getpNext();
+            ListNode temp = e.getpNext();
             temp.setpPrev(null);
             pFirst = temp;
             this.Liberar(e);
         }else if(e == pLast){
-            Usuario temp = e.getpPrev();
+            ListNode temp = e.getpPrev();
             temp.setpNext(null);
             pLast = temp;
             this.Liberar(e);
         }else{
-            Usuario temp1 = e.getpPrev();
-            Usuario temp2 = e.getpNext();
+            ListNode temp1 = e.getpPrev();
+            ListNode temp2 = e.getpNext();
             temp1.setpNext(e.getpNext());
             temp2.setpPrev(e.getpPrev());
             this.Liberar(e);
         }
     }
     
-    public String Imprimir(UserList list){
-        Usuario aux = list.getpFirst();
-        String print = "";
+    public void Eliminar(String username, String docname){//ELIMINAR PARA DOCUMENTOS
+        
+        
+        ListNode user = Buscar(username);
+        if (user!=null){
+            UserList list = user.getDocs();
+            ListNode e = list.Buscar(docname);
+            if(e == pFirst){
+                ListNode temp = e.getpNext();
+                temp.setpPrev(null);
+                pFirst = temp;
+                this.Liberar(e);
+            }else if(e == pLast){
+                ListNode temp = e.getpPrev();
+                temp.setpNext(null);
+                pLast = temp;
+                this.Liberar(e);
+            }else{
+                ListNode temp1 = e.getpPrev();
+                ListNode temp2 = e.getpNext();
+                temp1.setpNext(e.getpNext());
+                temp2.setpPrev(e.getpPrev());
+                this.Liberar(e);
+            }
+        }
+    }
+    
+    public String imprimirDocs(ListNode user){
+        String print = "Documentos:\n";
+        if (user!=null){
+            UserList list = user.getDocs();
+            ListNode aux = list.getpFirst();
+            while(aux != null){
+            print += ("Nombre: "+aux.getNombre() + " Tamaño: " + aux.getSize()+ " Tipo: " +aux.getType()+"\n");
+            aux = aux.getpNext();
+            }
+        }
+        return print;
+    }
+    
+    public String Imprimir(){
+        ListNode aux = pFirst;
+        String print = "Usuario:\n";
         while(aux != null){
-            print += (aux.getNombre() + "," + aux.getPrioridad() + "\n");
+            print += ("Username: "+ aux.getNombre() + " Prioridad: " + aux.getPrioridad() + "\n");
+            print+= imprimirDocs(aux);
             aux = aux.getpNext();
         }
         return print;
