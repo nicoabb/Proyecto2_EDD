@@ -69,15 +69,29 @@ public class UserList {
         Usuario uNew = new Usuario();
         uNew.setNombre(nombre);
         uNew.setPrioridad(prioridad);
+        Boolean existe = false;
         
         if(isEmpty()){
             pFirst = uNew;
             pLast = uNew;
         }else{
-            Usuario aux = pLast;
-            aux.setpNext(uNew);
-            uNew.setpPrev(aux);
-            pLast = uNew;   
+            Usuario aux = pFirst;
+            if (aux.getNombre().equals(nombre)){//revisa el nombre del primer elemento
+                existe = true;
+            }
+            while(aux.getpNext()!=null){ //recorre lista buscando el nombre
+                aux = aux.getpNext();
+                if(aux.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+                    
+            if (!existe){
+                //si no existe el nombre, inserta el nuevo usuario al final
+                aux.setpNext(uNew);
+                uNew.setpPrev(aux);
+                pLast = uNew;
+                }
         }
         size +=1;
     }

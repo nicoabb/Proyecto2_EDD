@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     public UserList list = new UserList();
     public archivo txt = new archivo();
+    public int size = 1021;
+    public HashTable table = new HashTable(size);
     
     /**
      * Creates new form Interfaz_Proyecto2
