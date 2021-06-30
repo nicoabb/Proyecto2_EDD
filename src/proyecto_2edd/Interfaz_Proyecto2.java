@@ -6,12 +6,10 @@
 package proyecto_2edd;
 
 import java.io.File;
+import java.time.Duration;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import java.time.Duration;
 import java.time.Instant;
-import java.util.concurrent.TimeUnit;
-import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -91,6 +89,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         userdocs = new javax.swing.JTextArea();
         fondo1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        fondopestana2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -339,6 +339,13 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Documentos", jPanel3);
 
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fondopestana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
+        jPanel4.add(fondopestana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("Impresión", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -402,6 +409,12 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         ListNode user = list.Buscar((String)selectuser);
         String data = list.imprimirDocs(user);
         userdocs.setText(data);
+    }
+    
+    private int GetTime(){
+        Instant end = Instant.now();
+        Duration interval = Duration.between(start, end);
+        return interval.toSecondsPart();
     }
     
     private void ExploradorArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExploradorArchivoActionPerformed
@@ -553,6 +566,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondopestana1;
+    private javax.swing.JLabel fondopestana2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -572,6 +586,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
