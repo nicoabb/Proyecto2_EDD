@@ -8,6 +8,10 @@ package proyecto_2edd;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.concurrent.TimeUnit;
+import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -18,6 +22,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     public archivo txt = new archivo();
     public int size = 1021;
     public HashTable table = new HashTable(size);
+    Instant start = Instant.now();
     
     /**
      * Creates new form Interfaz_Proyecto2
@@ -29,6 +34,9 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         boxprioridades.addItem("prioridad_media");
         boxprioridades.addItem("prioridad_alta");
         boxelimuser.removeAllItems();
+        usersbox.removeAllItems(); 
+        deletedocbox.removeAllItems();
+        printdocbox.removeAllItems();
     }
 
     /**
@@ -61,9 +69,37 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         deletebutton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        printdocbutton = new javax.swing.JButton();
+        deletedocbutton = new javax.swing.JButton();
+        createdocbutton = new javax.swing.JButton();
+        printdocbox = new javax.swing.JComboBox<>();
+        deletedocbox = new javax.swing.JComboBox<>();
+        usersbox = new javax.swing.JComboBox<>();
+        newdoctype = new javax.swing.JTextField();
+        newdocsize = new javax.swing.JTextField();
+        newdocname = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userdocs = new javax.swing.JTextArea();
+        fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,6 +164,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 30));
 
         fieldnewname.setText("Inserte nombre de Usuario");
+        fieldnewname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fieldnewnameMouseClicked(evt);
+            }
+        });
+        fieldnewname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldnewnameActionPerformed(evt);
+            }
+        });
         jPanel2.add(fieldnewname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, -1));
 
         boxprioridades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -157,8 +203,141 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Usuarios", jPanel2);
 
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPane1.addTab("tab3", jPanel3);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel16.setText("Seleccione");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 70, 20));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel15.setText("Imprimir Documentos");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 180, 30));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel14.setText("Seleccione");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 70, 20));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setText("Eliminar Documento");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 180, 30));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText("Tamaño");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 70, 20));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setText("Tipo");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 70, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("Nombre");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 70, 20));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setText("Nuevo Documento");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 180, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel7.setText("Documentos");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("Seleccione Usuario");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 30));
+
+        printdocbutton.setText("Imprimir documento");
+        printdocbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printdocbuttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(printdocbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 220, -1));
+
+        deletedocbutton.setText("Eliminar documento");
+        deletedocbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletedocbuttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deletedocbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 220, -1));
+
+        createdocbutton.setText("Agregar documento nuevo");
+        createdocbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createdocbuttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(createdocbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 250, -1));
+
+        printdocbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(printdocbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 150, -1));
+
+        deletedocbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        deletedocbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletedocboxActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deletedocbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 150, -1));
+
+        usersbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(usersbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 250, -1));
+
+        newdoctype.setText("Inserte tipo (.txt, .pdf, etc)");
+        newdoctype.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newdoctypeMouseClicked(evt);
+            }
+        });
+        jPanel3.add(newdoctype, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 190, -1));
+
+        newdocsize.setText("Inserte tamaño (sin unidades)");
+        newdocsize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newdocsizeMouseClicked(evt);
+            }
+        });
+        newdocsize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newdocsizeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(newdocsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 190, -1));
+
+        newdocname.setText("Inserte nombre del documento");
+        newdocname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newdocnameMouseClicked(evt);
+            }
+        });
+        jPanel3.add(newdocname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 190, -1));
+
+        userdocs.setColumns(20);
+        userdocs.setRows(5);
+        userdocs.setEnabled(false);
+        jScrollPane2.setViewportView(userdocs);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 190, 250));
+
+        fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
+        jPanel3.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("Documentos", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,6 +353,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
     private void Refresh(){
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar el archivo","ALERTA", JOptionPane.WARNING_MESSAGE);
@@ -199,6 +379,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             }
             String data = list.Imprimir();
             jTextPane1.setText(data);
+            this.AddToDocumentos();
             ExploradorArchivo.setText("Datos de usuario cargados");
         }else{
             JOptionPane.showMessageDialog(this, "Tipo de archivo no válido","ALERTA", JOptionPane.WARNING_MESSAGE);
@@ -206,6 +387,23 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_browsebuttonActionPerformed
 
+    private void AddToDocumentos(){
+        ListNode aux = list.getpFirst();
+            while(aux != null){
+                usersbox.addItem(aux.getNombre()); 
+                deletedocbox.addItem(aux.getNombre());
+                printdocbox.addItem(aux.getNombre());
+                aux = aux.getpNext();
+            }
+    }
+    
+    private void AddUserDocs(){
+        Object selectuser = usersbox.getSelectedItem();
+        ListNode user = list.Buscar((String)selectuser);
+        String data = list.imprimirDocs(user);
+        userdocs.setText(data);
+    }
+    
     private void ExploradorArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExploradorArchivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ExploradorArchivoActionPerformed
@@ -245,6 +443,66 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         boxelimuser.removeItemAt(index);
         this.Refresh();
     }//GEN-LAST:event_deletebuttonActionPerformed
+
+    private void fieldnewnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldnewnameMouseClicked
+        fieldnewname.selectAll();
+    }//GEN-LAST:event_fieldnewnameMouseClicked
+
+    private void newdocsizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newdocsizeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newdocsizeActionPerformed
+
+    private void fieldnewnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldnewnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldnewnameActionPerformed
+
+    private void newdocnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newdocnameMouseClicked
+        newdocname.selectAll();
+    }//GEN-LAST:event_newdocnameMouseClicked
+
+    private void newdocsizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newdocsizeMouseClicked
+        newdocsize.selectAll();
+    }//GEN-LAST:event_newdocsizeMouseClicked
+
+    private void newdoctypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newdoctypeMouseClicked
+        newdoctype.selectAll();
+    }//GEN-LAST:event_newdoctypeMouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        fieldnewname.setText("Inserte nombre de Usuario");
+        newdocname.setText("Inserte nombre del documento");
+        newdocsize.setText("Inserte tamaño (sin unidades)");
+        newdoctype.setText("Inserte tipo (.txt, .pdf, etc)");
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void deletedocboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deletedocboxActionPerformed
+
+    private void createdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createdocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_createdocbuttonActionPerformed
+
+    private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_printdocbuttonActionPerformed
+
+    private void deletedocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_deletedocbuttonActionPerformed
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        this.AddUserDocs();
+    }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,21 +545,43 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxelimuser;
     private javax.swing.JComboBox<String> boxprioridades;
     private javax.swing.JButton browsebutton;
+    private javax.swing.JButton createdocbutton;
     private javax.swing.JButton deletebutton;
+    private javax.swing.JComboBox<String> deletedocbox;
+    private javax.swing.JButton deletedocbutton;
     private javax.swing.JTextField fieldnewname;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondopestana1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextField newdocname;
+    private javax.swing.JTextField newdocsize;
+    private javax.swing.JTextField newdoctype;
+    private javax.swing.JComboBox<String> printdocbox;
+    private javax.swing.JButton printdocbutton;
+    private javax.swing.JTextArea userdocs;
+    private javax.swing.JComboBox<String> usersbox;
     // End of variables declaration//GEN-END:variables
 }

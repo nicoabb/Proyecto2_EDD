@@ -7,7 +7,7 @@ package proyecto_2edd;
 
 /**
  *
- * @author Nicolás Briceño
+ * @author Nicolás Briceño y Christian Behrens
  */
 public class ListNode {
     private String nombre;
@@ -50,9 +50,6 @@ public class ListNode {
     public void setType(String type) {
         this.type = type;
     }
-    
-    
-    
     
     public UserList getDocs() {
         return docs;

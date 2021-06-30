@@ -175,7 +175,6 @@ public class UserList {
     
     public void Eliminar(String username, String docname){//ELIMINAR PARA DOCUMENTOS
         
-        
         ListNode user = Buscar(username);
         if (user!=null){
             UserList list = user.getDocs();
@@ -206,7 +205,7 @@ public class UserList {
             UserList list = user.getDocs();
             ListNode aux = list.getpFirst();
             while(aux != null){
-            print += ("Nombre: "+aux.getNombre() + " Tamaño: " + aux.getSize()+ " Tipo: " +aux.getType()+"\n");
+            print += ("Nombre: "+aux.getNombre() + " / Tamaño: " + aux.getSize()+ " / Tipo: " +aux.getType()+"\n");
             aux = aux.getpNext();
             }
         }
@@ -215,10 +214,10 @@ public class UserList {
     
     public String Imprimir(){
         ListNode aux = pFirst;
-        String print = "Usuario:\n";
+        String print = "Usuarios:\n";
         while(aux != null){
-            print += ("Username: "+ aux.getNombre() + " Prioridad: " + aux.getPrioridad() + "\n");
-            print+= imprimirDocs(aux);
+            print += ("\nUsername: "+ aux.getNombre() + "  / Prioridad: " + aux.getPrioridad() + "\n");
+            print += imprimirDocs(aux);
             aux = aux.getpNext();
         }
         return print;
