@@ -497,20 +497,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-    }//GEN-LAST:event_createdocbuttonActionPerformed
-
-    private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
-        if(list.getpFirst() == null){
-            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-    }//GEN-LAST:event_printdocbuttonActionPerformed
-
-    private void deletedocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocbuttonActionPerformed
-        if(list.getpFirst() == null){
-            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-            return;
         }else{
             String selectuser = (String)boxelimuser.getSelectedItem();
             ListNode user = list.Buscar((String)selectuser);
@@ -528,6 +514,21 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             
             
             a.preOrder(a.getRoot());
+        
+        }
+    }//GEN-LAST:event_createdocbuttonActionPerformed
+
+    private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_printdocbuttonActionPerformed
+
+    private void deletedocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_deletedocbuttonActionPerformed
 
