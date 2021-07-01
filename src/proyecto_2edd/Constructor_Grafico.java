@@ -28,7 +28,7 @@ public class Constructor_Grafico extends JPanel
     private HashMap posicionNodos = null;
     private HashMap subtreeSizes = null;
     private boolean verificar = true;
-    private int padre = 10, hijo = 10;
+    private int padre = 20, hijo = 30;
     private Dimension vacio = new Dimension(0,0);
     private FontMetrics fm = null;
     
@@ -93,15 +93,15 @@ public class Constructor_Grafico extends JPanel
       int center = 0;
       
       if (der != Integer.MAX_VALUE)
-          center = der - derecho.width - hijo/4;
+          center = der - derecho.width - hijo/2;
       else if (izq != Integer.MAX_VALUE)
-          center = izq + izquierdo.width + hijo/4;
+          center = izq + izquierdo.width + hijo/2;
       int width = fm.stringWidth(n.getName()+"");
  
       posicionNodos.put(n,new Rectangle(center - width/2 - 3, borde, width + 6, fm.getHeight()));
       
-      calcularPosicion(n.getLeft(), Integer.MAX_VALUE, center - hijo/4, borde + fm.getHeight() + padre);
-      calcularPosicion(n.getRight(), center + hijo/4, Integer.MAX_VALUE, borde + fm.getHeight() + padre);
+      calcularPosicion(n.getLeft(), Integer.MAX_VALUE, center - hijo/2, borde + fm.getHeight() + padre);
+      calcularPosicion(n.getRight(), center + hijo/2, Integer.MAX_VALUE, borde + fm.getHeight() + padre);
     }
   
     private void dibujarArbol(Graphics2D g, Nodo n, int puntox, int puntoy, int yoffs) 
