@@ -528,6 +528,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             
             
             a.preOrder(a.getRoot());
+        }
     }//GEN-LAST:event_deletedocbuttonActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
