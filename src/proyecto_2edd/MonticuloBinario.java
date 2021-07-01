@@ -124,7 +124,7 @@ public class MonticuloBinario {
         return z;
     }
 
-    public Nodo insert(Nodo nodo, String name, String tipo, int tamano) {
+     public Nodo insert(Nodo nodo, String name, String tipo, int tamano, int prioridad) {
         if (this.root == null) {
             this.root = new Nodo(name, tipo, tamano);
            
@@ -132,14 +132,20 @@ public class MonticuloBinario {
             Nodo h = new Nodo(name, tipo, tamano);
             
             return h;
-        } else if (nodo.getTamano() > tamano) {
-            nodo.setLeft(insert(nodo.getLeft(), name, tipo, tamano));
-        } else if (nodo.getTamano() < tamano) {
-            nodo.setRight(insert(nodo.getRight(), name, tipo, tamano));
+        } else if (nodo.getPrioridad() > prioridad) {
+            nodo.setLeft(insert(nodo.getLeft(), name, tipo, tamano, prioridad));
+        } else {
+            nodo.setRight(insert(nodo.getRight(), name, tipo, tamano, prioridad));
         }
         return rebalance(nodo);
     }
-
+     void preOrder(Nodo node) {
+        if (node != null) {
+            System.out.print(node.getName() + " ");
+            preOrder(node.getLeft());
+            preOrder(node.getRight());
+        }
+     }
     static Nodo imprimir(Nodo node)
     {
        Nodo current = node;
