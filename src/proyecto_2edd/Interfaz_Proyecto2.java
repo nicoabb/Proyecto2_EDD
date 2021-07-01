@@ -21,6 +21,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     public int size = 1021;
     public HashTable table = new HashTable(size);
     Instant start = Instant.now();
+    MonticuloBinario a = new MonticuloBinario();
     
     /**
      * Creates new form Interfaz_Proyecto2
