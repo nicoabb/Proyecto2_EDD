@@ -140,7 +140,19 @@ public class MonticuloBinario {
         return rebalance(nodo);
     }
 
-   
+    static Nodo imprimir(Nodo node)
+    {
+       Nodo current = node;
+ 
+        /* loop down to find the leftmost leaf */
+        while (current.getLeft() != null)
+            current = current.getLeft();
+        
+        JOptionPane.showMessageDialog(null, "Se ha impreso " + current.getName() + " con éxito.");
+        return current; 
+        
+    }
+         
 
    
 
