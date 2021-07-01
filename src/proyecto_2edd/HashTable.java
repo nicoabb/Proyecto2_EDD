@@ -10,8 +10,8 @@ package proyecto_2edd;
  * @author cbcbe
  */
 public class HashTable {
-    private HashNode tabla[];
     private int size;
+    private HashNode[] tabla;
 
     public HashTable( int size) {
         this.size = size;
@@ -75,9 +75,7 @@ public class HashTable {
             //no existe nada en esa posicion
         }
     }
-    
-    
-    
+        
     public HashNode buscar(String nombre){  //Buscar por el nombre del doc
         int posicion = hashing(nombre);
         HashNode temp = this.tabla[posicion];
