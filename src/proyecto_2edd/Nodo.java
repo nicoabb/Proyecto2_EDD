@@ -16,6 +16,7 @@ public class Nodo {
     private String name;
     private String tipo;
     private int tamano;
+    private int prioridad; 
     public Nodo(String name, String tipo, int tamano){
         this.tamano = tamano;
         this.name = name;
@@ -37,6 +38,19 @@ public class Nodo {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+      /**
+     * @return the prioridad
+     */
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    /**
+     * @param height the prioridad to set
+     */
+    public void setProridad(int prioridad) {
+        this.prioridad = prioridad;
     }
 
     /**
