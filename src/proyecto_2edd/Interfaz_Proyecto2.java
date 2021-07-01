@@ -510,7 +510,23 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
-        }
+        }else{
+            String selectuser = (String)boxelimuser.getSelectedItem();
+            ListNode user = list.Buscar((String)selectuser);
+            String nombre = newdocname.getText();
+            String tamano = newdocsize.getText();
+            String tipo = newdoctype.getText();
+            
+            if(user.getPrioridad().equals("prioridad_alta")){
+                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 1);          
+            } else if (user.getPrioridad().equals("prioridad_media")){
+                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 2); 
+            } else if (user.getPrioridad().equals("prioridad_baja")){
+                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 3); 
+            }
+            
+            
+            a.preOrder(a.getRoot());
     }//GEN-LAST:event_deletedocbuttonActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
