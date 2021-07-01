@@ -139,7 +139,7 @@ public class Constructor_Grafico extends JPanel
          }
          
          Graphics2D g2d = (Graphics2D) g;
-         g2d.translate(getWidth() / 4, padre);
+         g2d.translate(getWidth() / 2, padre);
          dibujarArbol(g2d, this.arbol.getRoot(), Integer.MAX_VALUE, 2000, 
                   fm.getLeading() + fm.getAscent());
          fm = null;
