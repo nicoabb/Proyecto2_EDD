@@ -309,6 +309,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jPanel3.add(deletedocbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 150, -1));
 
         usersbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        usersbox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                usersboxItemStateChanged(evt);
+            }
+        });
+        usersbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersboxMouseClicked(evt);
+            }
+        });
         usersbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usersboxActionPerformed(evt);
@@ -447,8 +457,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         ListNode aux = list.getpFirst();
             while(aux != null){
                 usersbox.addItem(aux.getNombre()); 
-                deletedocbox.addItem(aux.getNombre());
-                printdocbox.addItem(aux.getNombre());
                 aux = aux.getpNext();
             }
     }
@@ -503,6 +511,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         int index = boxelimuser.getSelectedIndex();
         list.Eliminar(nombre);
         boxelimuser.removeItemAt(index);
+        usersbox.removeItemAt(index);
         this.Refresh();
     }//GEN-LAST:event_deletebuttonActionPerformed
 
@@ -544,22 +553,43 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private void createdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createdocbuttonActionPerformed
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-            return;
+        return;
             
         }else{
-            String selectuser = (String)boxelimuser.getSelectedItem();
+            String selectuser = (String)usersbox.getSelectedItem();
             ListNode user = list.Buscar((String)selectuser);
+            UserList docs = user.getDocs();
             String nombre = newdocname.getText();
             String tamano = newdocsize.getText();
             String tipo = newdoctype.getText();
+            int time = this.GetTime();
+            docs.Insertar(user, nombre, tamano, tipo, time);
+            printdocbox.addItem(nombre);
+            deletedocbox.addItem(nombre);
+        }
+        
+    }//GEN-LAST:event_createdocbuttonActionPerformed
+
+    private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
             
-            if(user.getPrioridad().equals("prioridad_alta")){
-                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 1);          
-            } else if (user.getPrioridad().equals("prioridad_media")){
-                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 2); 
-            } else if (user.getPrioridad().equals("prioridad_baja")){
-                a.insert(a.getRoot(), nombre, tipo, Integer.parseInt(tamano), 3); 
+        }else{
+            String selectuser = (String)usersbox.getSelectedItem();
+            ListNode user = list.Buscar(selectuser);
+            String docname = (String)printdocbox.getSelectedItem();
+            UserList docs = user.getDocs();
+            ListNode doc = docs.Buscar(docname);
+            
+            if((user.getPrioridad().trim()).equals("prioridad_alta")){
+                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 1);          
+            } else if ((user.getPrioridad().trim()).equals("prioridad_media")){
+                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 2); 
+            } else if ((user.getPrioridad().trim()).equals("prioridad_baja")){
+                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 3); 
             }
+            a.preOrder(a.getRoot());
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame1.getBounds();
         this.jInternalFrame1 = null;
@@ -570,19 +600,29 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         this.jInternalFrame1.setEnabled(false);
         drawer = new Constructor_Grafico(a);
         this.jInternalFrame1.add(drawer, BorderLayout.CENTER);
-            
-           
-        }
-        
-    }//GEN-LAST:event_createdocbuttonActionPerformed
-
-    private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
-        if(list.getpFirst() == null){
-            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-            return;
         }
     }//GEN-LAST:event_printdocbuttonActionPerformed
 
+    private void ActualizarBoxDocs(){
+        String selectuser = (String)usersbox.getSelectedItem();
+        ListNode user = list.Buscar(selectuser);
+        try{
+            UserList docs = user.getDocs();
+            ListNode auxf = docs.getpFirst();
+            printdocbox.removeAllItems();
+            deletedocbox.removeAllItems();
+            while(auxf != null){
+                printdocbox.addItem(auxf.getNombre());
+                deletedocbox.addItem(auxf.getNombre());
+                auxf = auxf.getpNext();
+            }
+        }catch(NullPointerException e){
+            printdocbox.removeAllItems();
+            deletedocbox.removeAllItems();
+        }
+        
+    }
+    
     private void deletedocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocbuttonActionPerformed
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
@@ -599,8 +639,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     }//GEN-LAST:event_boxelimuserActionPerformed
 
     private void usersboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersboxActionPerformed
-      
+        // TODO add your handling code here:
     }//GEN-LAST:event_usersboxActionPerformed
+
+    private void usersboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersboxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersboxMouseClicked
+
+    private void usersboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usersboxItemStateChanged
+        ActualizarBoxDocs();
+    }//GEN-LAST:event_usersboxItemStateChanged
 
     /**
      * @param args the command line arguments

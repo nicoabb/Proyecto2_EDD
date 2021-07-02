@@ -95,12 +95,10 @@ public class UserList {
         size ++;
     }
     
-    public void Insertar(String username, String docname, String size, String type){//INSERTAR PARA DOCUMENTOS
-        ListNode uNew = new ListNode(docname, size, type);
+    public void Insertar(ListNode user, String docname, String size, String type, int time){//INSERTAR PARA DOCUMENTOS
+        ListNode uNew = new ListNode(docname, size, type, time);
         Boolean existe = false;
-        
-        ListNode user = Buscar(username);
-        
+                
         if (user!=null){
             
             UserList list = user.getDocs();
@@ -129,6 +127,7 @@ public class UserList {
             int listsize = list.getSize();
             list.setSize(listsize++);
         }else{
+            System.out.println("No existe");
            //no existe el usuario 
         }
     }

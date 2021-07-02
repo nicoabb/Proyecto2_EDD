@@ -17,6 +17,7 @@ public class ListNode {
     private UserList docs;
     private String size;
     private String type;
+    private int time;
     
     
     public ListNode(String nombre, String prioridad){//Nodo para los usuarios
@@ -27,8 +28,9 @@ public class ListNode {
         this.docs = new UserList();
     }
 
-    public ListNode(String nombre, String size, String type) {//nodo para los docs de c/ usuario
+    public ListNode(String nombre, String size, String type, int time) {//nodo para los docs de c/ usuario
         this.nombre = nombre;
+        this.time = time;
         this.pNext = null;
         this.pPrev = null;
         this.size = size;
