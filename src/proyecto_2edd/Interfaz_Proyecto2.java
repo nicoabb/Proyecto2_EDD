@@ -53,6 +53,9 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        label1 = new java.awt.Label();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -96,10 +99,23 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         userdocs = new javax.swing.JTextArea();
         fondo1 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         fondo2 = new javax.swing.JLabel();
+
+        jLabel21.setText("jLabel21");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel23.setText("Seleccione Usuario");
+
+        label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -115,7 +131,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Inicio");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
         fondopestana1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
         jPanel1.add(fondopestana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -272,7 +288,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Seleccione Usuario");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 30));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 180, 30));
 
         printdocbutton.setText("Imprimir documento");
         printdocbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -366,6 +382,27 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
         jPanel3.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLabel17.setText("jLabel17");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel18.setText("jLabel18");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel19.setText("Eliminar Documento");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 180, 30));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setText("Eliminar Documento");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 180, 30));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel22.setText("Seleccione Usuario");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 30));
+
         jTabbedPane1.addTab("Documentos", jPanel3);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -413,7 +450,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,9 +606,13 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             String tamano = newdocsize.getText();
             String tipo = newdoctype.getText();
             int time = this.GetTime();
-            docs.Insertar(user, nombre, tamano, tipo, time);
-            printdocbox.addItem(nombre);
-            deletedocbox.addItem(nombre);
+            if (docs.Insertar(user, nombre, tamano, tipo, time)){
+                HashNode doc = new HashNode( user.getNombre(),  user.getPrioridad(),  nombre,  tamano,  tipo);
+                table.Insertar(doc);
+                printdocbox.addItem(nombre);
+                deletedocbox.addItem(nombre);
+            }
+            
         }
         
     }//GEN-LAST:event_createdocbuttonActionPerformed
@@ -633,6 +674,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
+        }else{
+            HashNode aux = table.buscar((String)deletedocbox.getSelectedItem());
+            String user = aux.getUsername();
+            String docname = aux.getDocname();
+            int index = deletedocbox.getSelectedIndex();
+            list.Eliminar(user, docname);
+            deletedocbox.removeItemAt(index);
+            printdocbox.removeItemAt(index);
+            this.Refresh();
+    
         }
     }//GEN-LAST:event_deletedocbuttonActionPerformed
 
@@ -716,7 +767,14 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -732,6 +790,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextPane jTextPane1;
+    private java.awt.Label label1;
     private javax.swing.JTextField newdocname;
     private javax.swing.JTextField newdocsize;
     private javax.swing.JTextField newdoctype;

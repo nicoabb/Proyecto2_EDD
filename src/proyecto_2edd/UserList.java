@@ -5,6 +5,8 @@
  */
 package proyecto_2edd;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nicolás Briceño
@@ -90,12 +92,16 @@ public class UserList {
                 aux.setpNext(uNew);
                 uNew.setpPrev(aux);
                 pLast = uNew;
-                }
+                }else{
+                JOptionPane.showMessageDialog(null, "NO PUEDE AGREGAR UN USUARIO CON UN NOMBRE REPETIDO");
+                return;
+            }
+            
         }
         size ++;
     }
     
-    public void Insertar(ListNode user, String docname, String size, String type, int time){//INSERTAR PARA DOCUMENTOS
+    public boolean Insertar(ListNode user, String docname, String size, String type, int time){//INSERTAR PARA DOCUMENTOS
         ListNode uNew = new ListNode(docname, size, type, time);
         Boolean existe = false;
                 
@@ -122,14 +128,21 @@ public class UserList {
                     aux.setpNext(uNew);
                     uNew.setpPrev(aux);
                     list.setpLast(uNew);
-                    }
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "NO PUEDE AGREGAR UN DOCUMMENTO CON UN NOMBRE REPETIDO");
+                    return false;
+            }
             }
             int listsize = list.getSize();
             list.setSize(listsize++);
+            return true;
         }else{
             System.out.println("No existe");
+            return false;
            //no existe el usuario 
         }
+        
     }
     
     public ListNode Buscar(String nombre){
@@ -178,15 +191,15 @@ public class UserList {
         if (user!=null){
             UserList list = user.getDocs();
             ListNode e = list.Buscar(docname);
-            if(e == pFirst){
+            if(e == list.getpFirst()){
                 ListNode temp = e.getpNext();
                 temp.setpPrev(null);
-                pFirst = temp;
+                list.setpFirst(temp);
                 this.Liberar(e);
-            }else if(e == pLast){
+            }else if(e == list.getpLast()){
                 ListNode temp = e.getpPrev();
                 temp.setpNext(null);
-                pLast = temp;
+                list.setpLast(temp);
                 this.Liberar(e);
             }else{
                 ListNode temp1 = e.getpPrev();

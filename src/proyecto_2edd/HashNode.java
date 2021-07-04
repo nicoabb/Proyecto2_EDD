@@ -36,7 +36,6 @@ public class HashNode {
         this.prev = prev;
     }
      
-
     public HashNode getNext() {
         return next;
     }
@@ -84,7 +83,5 @@ public class HashNode {
     public void setDoctype(String doctype) {
         this.doctype = doctype;
     }
-    
-    
-    
+  
 }
