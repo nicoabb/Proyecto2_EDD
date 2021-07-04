@@ -18,9 +18,13 @@ import javax.swing.JOptionPane;
 public class MonticuloBinario {
 
     private Nodo root;
+    public int height; 
+
 
     public MonticuloBinario() {
+        height = 0; 
         this.root = null;
+         
     }
 
     /**
@@ -36,7 +40,30 @@ public class MonticuloBinario {
     public void setRoot(Nodo root) {
         this.root = root;
     }
+    
+    public int getfullCount(Nodo root){
+       
+        if (root == null)
+            return 0;    
+     return 1 + getfullCount(root.getLeft()) + getfullCount(root.getRight());
+    }
 
+
+ public int getLeaf(Nodo root)
+{
+    if (root == null)
+    return 0;
+ 
+    int res = 0;
+    if (root.getLeft() != null && root.getRight() != null)
+        
+    res++;
+ 
+    res += (getfullCount(root.getLeft()) + getfullCount(root.getRight()));
+    return res;
+}
+ 
+    
     public int height(Nodo n) {
         if (n == null) {
             return 0;
@@ -124,24 +151,100 @@ public class MonticuloBinario {
         return z;
     }
 
-     public Nodo insert(Nodo nodo, String name, String tipo, int tamano, int prioridad) {
+    
+   
+   public void insertar(String name, String tipo, int tamano, int prioridad) {
         if (this.root == null) {
-            this.root = new Nodo(name, tipo, tamano);
            
-        } else if (nodo == null) {
-            Nodo h = new Nodo(name, tipo, tamano);
+            this.root =  new Nodo(name, tipo, tamano, prioridad);
+            root.setIndex(0);
+            heapify(root);
             
-            return h;
-        } else if (nodo.getPrioridad() > prioridad) {
-            nodo.setLeft(insert(nodo.getLeft(), name, tipo, tamano, prioridad));
         } else {
-            nodo.setRight(insert(nodo.getRight(), name, tipo, tamano, prioridad));
+            this.insertoprueba(this.root, name, tipo, tamano, prioridad);
+            
         }
-        return rebalance(nodo);
     }
+
+
+    
+ 
+     public Nodo find(Nodo n, int key) {
+                Nodo result = null;
+                if (n == null)
+                        return null;
+                if (n.getIndex()== key)
+                        return n;
+                if (n.getLeft() != null)
+                        result = find(n.getLeft(), key);
+                if (result == null)
+                        result = find(n.getRight(), key);
+                return result;
+        }
+            
+  
+     Nodo ordernar(Nodo node){
+         if (node.getParent() == null ){
+             
+             return node;
+         }else{
+         System.out.println(node.getParent().getName());
+         
+             
+            if (node.getParent().getPrioridad() > node.getPrioridad()){
+                
+             System.out.println("Entro");
+             
+             
+             System.out.println(node.getName());
+             
+           
+            
+                 
+                 return node;
+             
+             } 
+         }
+         
+         
+        
+        return null;
+     }
+     
+    public void insertoprueba(Nodo padre, String name,String tipo, int tamano, int prioridad){
+    Nodo agg = new Nodo(name, tipo, tamano, prioridad);
+  
+
+    int index = getfullCount(root); 
+      agg.setIndex(index);
+   
+   int parentIndex = (int)Math.floor((index-1)/2);
+    
+    Nodo parent = find(root, parentIndex);
+    agg.setParent(parent);
+          
+    if(index % 2 == 1) { // left
+ 
+
+        parent.setLeft(agg);
+       
+
+    } else { // right
+
+        parent.setRight(agg);
+
+    }
+    heapify(agg);
+
+    }
+    
+
+    
+
+        
+     
      void preOrder(Nodo node) {
         if (node != null) {
-            System.out.print(node.getName() + " ");
             preOrder(node.getLeft());
             preOrder(node.getRight());
         }
@@ -160,6 +263,103 @@ public class MonticuloBinario {
     }
          
 
+        void heapify(Nodo node){
+            
+            
+            Nodo parent = node.getParent(); 
+            if(parent == null){
+                return;
+            }
+            if  (parent.getPrioridad() > node.getPrioridad()){
+                
+                swapNodes(node, parent);
+                heapify(node); 
+            }
+            
+        } 
+      
+        void heapifyDown(Nodo node){
+            Nodo izq =  node.getLeft();
+            Nodo der = node.getRight();
+            Nodo nieto; 
+            
+            if (izq == null && der == null){
+                return;
+            }
+            if(izq != null & der!= null){
+                if(izq.getPrioridad() <= der.getPrioridad()){
+                  nieto = izq;  
+                }
+                 
+            else{
+                nieto = der;
+                
+            }
+            }else{
+                nieto = izq;
+            }
+          if(nieto.getPrioridad() < node.getPrioridad()){
+              swapNodes(node, nieto);
+              heapifyDown(node);
+                     
+          }      
+            
+        }
+        
+        
+        
+     public Nodo swapNodes(Nodo node, Nodo parent){
+        
+         Nodo aux = new Nodo(node.getName(), node.getTipo(), node.getTamano(), node.getPrioridad());     
+         node.setName(parent.getName());
+         node.setProridad(parent.getPrioridad());
+         node.seTamano(parent.getTamano());
+         node.setTipo(parent.getTipo());
+         parent.setName(aux.getName());
+         parent.setProridad(aux.getPrioridad());
+         parent.seTamano(aux.getTamano());
+         parent.setTipo(aux.getTipo());
+         return node;
+     }
+     
+Nodo elim_min(){
+    Nodo min = getRoot();
+    if(min!= null){
+        delete(min);
+    }
+    return min;
+}
+
+void delete(Nodo min){
+    
+    Nodo last = find(root, getfullCount(root)-1);
+    if (min != last){
+        swapNodesMin(min);
+        System.out.println(last.getParent().getName());
+    }
+    
+    heapify(min);
+    heapifyDown(min);
+            
+}
+public Nodo swapNodesMin(Nodo min){
+    Nodo last = find(root, getfullCount(root)-1);
+     min.setName(last.getName());
+         min.setProridad(last.getPrioridad());
+         min.seTamano(last.getTamano());
+         min.setTipo(last.getTipo());
+   Nodo papa = last.getParent();
+   if (papa.getRight()!= null){
+       papa.setRight(null);
+   } else {
+       papa.setLeft(null);
+   }
+       
+    
+    return min; 
+}
+}
+
    
 
-}
+

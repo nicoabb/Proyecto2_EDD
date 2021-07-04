@@ -99,6 +99,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
+        fondo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -403,7 +404,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jPanel4.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 520));
 
-        jTabbedPane1.addTab("Impresión", jPanel4);
+        fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
+        jPanel4.add(fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane1.addTab("Arbol de Impresión", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -500,6 +504,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         list.Insertar(nu, priority);
         boxelimuser.addItem(list.getpLast().getNombre());
         this.Refresh();
+        this.AddToDocumentos();
+        this.ActualizarBoxDocs();
     }//GEN-LAST:event_addbuttonActionPerformed
 
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
@@ -583,11 +589,11 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             ListNode doc = docs.Buscar(docname);
             
             if((user.getPrioridad().trim()).equals("prioridad_alta")){
-                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 1);          
+                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 1);          
             } else if ((user.getPrioridad().trim()).equals("prioridad_media")){
-                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 2); 
+                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 2); 
             } else if ((user.getPrioridad().trim()).equals("prioridad_baja")){
-                a.insert(a.getRoot(), doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 3); 
+                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 3); 
             }
             a.preOrder(a.getRoot());
         this.jDesktopPane1.removeAll();
@@ -698,6 +704,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JTextField fieldnewname;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
+    private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondopestana1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;

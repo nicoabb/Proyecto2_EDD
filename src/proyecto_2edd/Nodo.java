@@ -13,16 +13,19 @@ public class Nodo {
      private int height;
     private Nodo left;
     private Nodo right;
+    private Nodo parent;
     private String name;
     private String tipo;
     private int tamano;
     private int prioridad; 
-    public Nodo(String name, String tipo, int tamano){
+    private int index; 
+    public Nodo(String name, String tipo, int tamano, int prioridad){
         this.tamano = tamano;
         this.name = name;
         this.tipo = tipo;
         this.left = null;
         this.right = null;
+        this.prioridad = prioridad; 
         this.height = 1;
     }
 
@@ -46,6 +49,18 @@ public class Nodo {
         return prioridad;
     }
 
+     /**
+     * @param height the index to set
+     */
+    public void setIndex(int index) {
+        this.index = index;
+    }
+      /**
+     * @return the prioridad
+     */
+    public int getIndex() {
+        return index;
+    }
     /**
      * @param height the prioridad to set
      */
@@ -66,7 +81,19 @@ public class Nodo {
     public void setLeft(Nodo left) {
         this.left = left;
     }
+ /**
+     * @return the parent
+     */
+    public Nodo getParent() {
+        return parent;
+    }
 
+    /**
+     * @param parent the parent to set
+     */
+    public void setParent(Nodo parent) {
+        this.parent = parent;
+    }
     /**
      * @return the right
      */
@@ -123,5 +150,5 @@ public class Nodo {
     public void seTamano(int tamano) {
         this.tamano = tamano;
     }
-    
+   
 }
