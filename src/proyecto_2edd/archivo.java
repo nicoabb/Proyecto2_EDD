@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,8 +30,9 @@ public class archivo {
                 list.Insertar(user[0],user[1]);
             }
         
-        }catch(IOException e){
-            System.out.println("Algo anda mal");
+        }catch(ArrayIndexOutOfBoundsException | IOException e){
+            JOptionPane.showMessageDialog(null, "Verifique el archivo csv ingresado.","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }
     
