@@ -190,8 +190,11 @@ public class UserList {
         ListNode user = Buscar(username);
         if (user!=null){
             UserList list = user.getDocs();
-            ListNode e = list.Buscar(docname);
-            if(e == list.getpFirst()){
+            ListNode e = list.Buscar(docname); 
+            if (e == list.getpFirst()&&e==list.getpLast()) {
+                list.setpFirst(null);
+                list.setpLast(null);
+            }else if(e == list.getpFirst()){
                 ListNode temp = e.getpNext();
                 temp.setpPrev(null);
                 list.setpFirst(temp);
