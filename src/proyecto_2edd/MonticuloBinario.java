@@ -322,42 +322,62 @@ public class MonticuloBinario {
          return node;
      }
      
-Nodo elim_min(){
-    Nodo min = getRoot();
-    if(min!= null){
-        delete(min);
+    Nodo elim_min(){
+        Nodo min = getRoot();
+        if(min!= null){
+            delete(min);
+        }
+        return min;
     }
-    return min;
-}
 
-void delete(Nodo min){
-    
-    Nodo last = find(root, getfullCount(root)-1);
-    if (min != last){
-        swapNodesMin(min);
-        System.out.println(last.getParent().getName());
+    void delete(Nodo min){
+
+        Nodo last = find(root, getfullCount(root)-1);
+        if (min != last){
+            swapNodesMin(min);
+        }
+
+        heapify(min);
+        heapifyDown(min);
+
+    }
+    public Nodo swapNodesMin(Nodo min){
+        Nodo last = find(root, getfullCount(root)-1);
+         min.setName(last.getName());
+             min.setProridad(last.getPrioridad());
+             min.seTamano(last.getTamano());
+             min.setTipo(last.getTipo());
+       Nodo papa = last.getParent();
+       if (papa.getRight()!= null){
+           papa.setRight(null);
+       } else {
+           papa.setLeft(null);
+       }
+
+
+        return min; 
     }
     
-    heapify(min);
-    heapifyDown(min);
-            
-}
-public Nodo swapNodesMin(Nodo min){
-    Nodo last = find(root, getfullCount(root)-1);
-     min.setName(last.getName());
-         min.setProridad(last.getPrioridad());
-         min.seTamano(last.getTamano());
-         min.setTipo(last.getTipo());
-   Nodo papa = last.getParent();
-   if (papa.getRight()!= null){
-       papa.setRight(null);
-   } else {
-       papa.setLeft(null);
-   }
-       
+    void elim_select(Nodo selec){
+        Nodo last = find(root, getfullCount(root)-1); 
+        selec.setProridad(last.getPrioridad()+1);
+        heapify(selec);
+        delete(selec);
     
-    return min; 
-}
+    }
+    
+    public Nodo BuscarNombre(Nodo doc, String name){
+        Nodo result = null;
+                if (doc == null)
+                        return null;
+                if (doc.getName().equals(name))
+                        return doc;
+                if (doc.getLeft() != null)
+                        result = BuscarNombre(doc.getLeft(), name);
+                if (result == null)
+                        result = BuscarNombre(doc.getRight(), name);
+                return result;
+    }
 }
 
    

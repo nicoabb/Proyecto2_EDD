@@ -101,7 +101,7 @@ public class UserList {
         size ++;
     }
     
-    public boolean Insertar(ListNode user, String docname, String size, String type, int time){//INSERTAR PARA DOCUMENTOS
+    public boolean Insertar(ListNode user, String docname, String size, String type, long time){//INSERTAR PARA DOCUMENTOS
         ListNode uNew = new ListNode(docname, size, type, time);
         Boolean existe = false;
                 
@@ -130,7 +130,7 @@ public class UserList {
                     list.setpLast(uNew);
                     
                 }else{
-                    JOptionPane.showMessageDialog(null, "NO PUEDE AGREGAR UN DOCUMMENTO CON UN NOMBRE REPETIDO");
+                    JOptionPane.showMessageDialog(null, "NO PUEDE AGREGAR UN DOCUMENTO CON UN NOMBRE REPETIDO");
                     return false;
             }
             }
@@ -146,22 +146,26 @@ public class UserList {
     }
     
     public ListNode Buscar(String nombre){
-        ListNode auxfirst = this.getpFirst();
-        ListNode auxlast = this.getpLast();
-        ListNode temp;
-        while(auxfirst != null && auxlast != null){
-            if(nombre.equals(auxfirst.getNombre())){
-                temp = auxfirst;
-                return temp;
+        if(nombre != null){
+            ListNode auxfirst = this.getpFirst();
+            ListNode auxlast = this.getpLast();
+            ListNode temp;
+            while(auxfirst != null && auxlast != null){
+                if(nombre.equals(auxfirst.getNombre())){
+                    temp = auxfirst;
+                    return temp;
+                }
+                if(nombre.equals(auxlast.getNombre())){
+                    temp = auxlast;
+                    return temp;
+                }
+                auxfirst = auxfirst.getpNext();
+                auxlast = auxlast.getpPrev();
             }
-            if(nombre.equals(auxlast.getNombre())){
-                temp = auxlast;
-                return temp;
-            }
-            auxfirst = auxfirst.getpNext();
-            auxlast = auxlast.getpPrev();
+            return null;
+        }else{
+            return null;
         }
-        return null;
     }
     
     public void Eliminar(String nombre){ //ELIMINAR PARA USUARIOS

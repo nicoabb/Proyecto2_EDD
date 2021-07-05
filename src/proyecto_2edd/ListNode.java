@@ -17,7 +17,7 @@ public class ListNode {
     private UserList docs;
     private String size;
     private String type;
-    private int time;
+    private long time;
     
     
     public ListNode(String nombre, String prioridad){//Nodo para los usuarios
@@ -28,7 +28,7 @@ public class ListNode {
         this.docs = new UserList();
     }
 
-    public ListNode(String nombre, String size, String type, int time) {//nodo para los docs de c/ usuario
+    public ListNode(String nombre, String size, String type, long time) {//Nodo para los docs de c/ usuario
         this.nombre = nombre;
         this.time = time;
         this.pNext = null;
@@ -92,4 +92,13 @@ public class ListNode {
     public void setpPrev(ListNode pPrev) {
         this.pPrev = pPrev;
     }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+    
 }

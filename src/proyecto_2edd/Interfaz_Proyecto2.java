@@ -40,8 +40,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         boxprioridades.addItem("prioridad_alta");
         boxelimuser.removeAllItems();
         usersbox.removeAllItems(); 
+        usersboxai.removeAllItems();
         deletedocbox.removeAllItems();
         printdocbox.removeAllItems();
+        boxelimar.removeAllItems();
     }
 
     /**
@@ -58,14 +60,13 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         fondopestana1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         browsebutton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         ExploradorArchivo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        existusers = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -105,9 +106,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        usersboxai = new javax.swing.JComboBox<>();
+        liberarimp = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        elimdelarbol = new javax.swing.JButton();
+        boxelimar = new javax.swing.JComboBox<>();
+        fondopestana2 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        fondo2 = new javax.swing.JLabel();
 
         jLabel21.setText("jLabel21");
 
@@ -128,12 +136,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Inicio");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
-
-        fondopestana1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
+        fondopestana1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/interfaz_edd.jpg"))); // NOI18N
         jPanel1.add(fondopestana1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Inicio", jPanel1);
@@ -163,8 +166,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         });
         jPanel2.add(ExploradorArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 340, -1));
 
-        jTextPane1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextPane1);
+        existusers.setEnabled(false);
+        jScrollPane1.setViewportView(existusers);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 440, 90));
 
@@ -377,7 +380,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         userdocs.setEnabled(false);
         jScrollPane2.setViewportView(userdocs);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 190, 250));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 240));
 
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
         jPanel3.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -407,42 +410,72 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel24.setText("Seleccione Usuario");
+        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 180, 30));
+
+        usersboxai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        usersboxai.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                usersboxaiItemStateChanged(evt);
+            }
+        });
+        usersboxai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersboxaiMouseClicked(evt);
+            }
+        });
+        usersboxai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersboxaiActionPerformed(evt);
+            }
+        });
+        jPanel5.add(usersboxai, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 12, 160, 30));
+
+        liberarimp.setText("Liberar Impresora");
+        liberarimp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                liberarimpActionPerformed(evt);
+            }
+        });
+        jPanel5.add(liberarimp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 160, 40));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel25.setText("Seleccione Documento");
+        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 160, 30));
+
+        elimdelarbol.setText("Eliminar Documento");
+        elimdelarbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elimdelarbolActionPerformed(evt);
+            }
+        });
+        jPanel5.add(elimdelarbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 150, 40));
+
+        boxelimar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxelimar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxelimarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(boxelimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 160, 30));
+
+        fondopestana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
+        jPanel5.add(fondopestana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 520, 180));
+
         jInternalFrame1.setVisible(true);
+        jDesktopPane1.add(jInternalFrame1);
+        jInternalFrame1.setBounds(100, 10, 329, 314);
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
-        );
-
-        jDesktopPane1.setLayer(jInternalFrame1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 520));
-
-        fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo 2 proyecto 2.jpeg"))); // NOI18N
-        jPanel4.add(fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel4.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 340));
 
         jTabbedPane1.addTab("Arbol de Impresión", jPanel4);
 
@@ -461,14 +494,50 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
         
-    private void Refresh(){
+    private void RefreshUsers(){
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar el archivo","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
         }
         txt.writecsv(list);
         String data = list.Imprimir();
-        jTextPane1.setText(data);
+        existusers.setText(data);
+        usersbox.removeAllItems();
+        usersboxai.removeAllItems();
+        boxelimuser.removeAllItems();
+        ListNode aux = list.getpFirst();
+            while(aux != null){
+                usersbox.addItem(aux.getNombre());
+                usersboxai.addItem(aux.getNombre());
+                boxelimuser.addItem(aux.getNombre());
+                aux = aux.getpNext();
+            }
+        
+    }
+    
+    private void ActualizarDocumentosDocs(){
+        String selectuser = (String)usersbox.getSelectedItem();
+        ListNode user = list.Buscar(selectuser);
+        String data = list.imprimirDocs(user);
+        userdocs.setText(data);
+        txt.writecsv(list);
+        String data2 = list.Imprimir();
+        existusers.setText(data2);
+        try{
+            UserList docs = user.getDocs();
+            ListNode auxf = docs.getpFirst();
+            printdocbox.removeAllItems();
+            deletedocbox.removeAllItems();
+            while(auxf != null){
+                printdocbox.addItem(auxf.getNombre());
+                deletedocbox.addItem(auxf.getNombre());
+                auxf = auxf.getpNext();
+            }
+        }catch(NullPointerException e){
+            printdocbox.removeAllItems();
+            deletedocbox.removeAllItems();
+        }
+        
     }
     
     private void browsebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browsebuttonActionPerformed
@@ -479,14 +548,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         list.setFilepath(filename);
         if(filename.contains(".csv")){
             txt.readcsv(list, list.getFilepath());
-            ListNode aux = list.getpFirst();
-            while(aux != null){
-                boxelimuser.addItem(aux.getNombre());
-                aux = aux.getpNext();
-            }
-            String data = list.Imprimir();
-            jTextPane1.setText(data);
-            this.AddToDocumentos();
+            this.RefreshUsers();
             ExploradorArchivo.setText("Datos de usuario cargados");
         }else{
             JOptionPane.showMessageDialog(this, "Tipo de archivo no válido","ALERTA", JOptionPane.WARNING_MESSAGE);
@@ -494,25 +556,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_browsebuttonActionPerformed
 
-    private void AddToDocumentos(){
-        ListNode aux = list.getpFirst();
-            while(aux != null){
-                usersbox.addItem(aux.getNombre()); 
-                aux = aux.getpNext();
-            }
-    }
-    
-    private void AddUserDocs(){
-        Object selectuser = usersbox.getSelectedItem();
-        ListNode user = list.Buscar((String)selectuser);
-        String data = list.imprimirDocs(user);
-        userdocs.setText(data);
-    }
-    
-    private int GetTime(){
+    private long GetTime(){
         Instant end = Instant.now();
-        Duration interval = Duration.between(start, end);
-        return interval.toSecondsPart();
+        Duration interval = Duration.between(start,end);
+        return interval.getSeconds();
     }
     
     private void ExploradorArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExploradorArchivoActionPerformed
@@ -539,10 +586,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         }
         String priority = (String)boxprioridades.getSelectedItem();
         list.Insertar(nu, priority);
-        boxelimuser.addItem(list.getpLast().getNombre());
-        this.Refresh();
-        this.AddToDocumentos();
-        this.ActualizarBoxDocs();
+        this.RefreshUsers();
+        this.ActualizarDocumentosDocs();
     }//GEN-LAST:event_addbuttonActionPerformed
 
     private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
@@ -555,7 +600,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         list.Eliminar(nombre);
         boxelimuser.removeItemAt(index);
         usersbox.removeItemAt(index);
-        this.Refresh();
+        usersboxai.removeItemAt(index);
+        this.RefreshUsers();
     }//GEN-LAST:event_deletebuttonActionPerformed
 
     private void fieldnewnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldnewnameMouseClicked
@@ -605,19 +651,24 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             String nombre = newdocname.getText();
             String tamano = newdocsize.getText();
             String tipo = newdoctype.getText();
-            int time = this.GetTime();
+            long time = this.GetTime();
             if (docs.Insertar(user, nombre, tamano, tipo, time)){
                 HashNode doc = new HashNode( user.getNombre(),  user.getPrioridad(),  nombre,  tamano,  tipo);
                 table.Insertar(doc);
-                printdocbox.addItem(nombre);
-                deletedocbox.addItem(nombre);
             }
-            
+            this.ActualizarDocumentosDocs();
         }
         
     }//GEN-LAST:event_createdocbuttonActionPerformed
 
     private void printdocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printdocbuttonActionPerformed
+        boolean prioridad = false;
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "¿Desea insertar por prioridad?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+          prioridad = true;
+        }
+        
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
@@ -628,15 +679,23 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             String docname = (String)printdocbox.getSelectedItem();
             UserList docs = user.getDocs();
             ListNode doc = docs.Buscar(docname);
-            
-            if((user.getPrioridad().trim()).equals("prioridad_alta")){
-                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 1);          
-            } else if ((user.getPrioridad().trim()).equals("prioridad_media")){
-                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 2); 
-            } else if ((user.getPrioridad().trim()).equals("prioridad_baja")){
-                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 3); 
+            if(prioridad == true){
+                switch (user.getPrioridad().trim()) {
+                    case "prioridad_alta":
+                        a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 1);
+                        break;
+                    case "prioridad_media":
+                        a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 2);
+                        break;
+                    case "prioridad_baja":
+                        a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), 3);
+                        break;
+                }
+            }else{
+                long t = this.GetTime();
+                a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), (int) t);
             }
-            a.preOrder(a.getRoot());
+        boxelimar.addItem(docname);
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame1.getBounds();
         this.jInternalFrame1 = null;
@@ -649,26 +708,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         this.jInternalFrame1.add(drawer, BorderLayout.CENTER);
         }
     }//GEN-LAST:event_printdocbuttonActionPerformed
-
-    private void ActualizarBoxDocs(){
-        String selectuser = (String)usersbox.getSelectedItem();
-        ListNode user = list.Buscar(selectuser);
-        try{
-            UserList docs = user.getDocs();
-            ListNode auxf = docs.getpFirst();
-            printdocbox.removeAllItems();
-            deletedocbox.removeAllItems();
-            while(auxf != null){
-                printdocbox.addItem(auxf.getNombre());
-                deletedocbox.addItem(auxf.getNombre());
-                auxf = auxf.getpNext();
-            }
-        }catch(NullPointerException e){
-            printdocbox.removeAllItems();
-            deletedocbox.removeAllItems();
-        }
-        
-    }
     
     private void deletedocbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedocbuttonActionPerformed
         if(list.getpFirst() == null){
@@ -680,15 +719,20 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             String docname = aux.getDocname();
             int index = deletedocbox.getSelectedIndex();
             list.Eliminar(user, docname);
-            deletedocbox.removeItemAt(index);
-            printdocbox.removeItemAt(index);
-            this.Refresh();
-    
+            try{
+                deletedocbox.removeItemAt(index);
+                printdocbox.removeItemAt(index);
+            }catch(ArrayIndexOutOfBoundsException e){
+                deletedocbox.removeAllItems();
+                printdocbox.removeAllItems();
+            }
+            this.RefreshUsers();
+            this.ActualizarDocumentosDocs();
         }
     }//GEN-LAST:event_deletedocbuttonActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        this.AddUserDocs();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void boxelimuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxelimuserActionPerformed
@@ -704,8 +748,65 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     }//GEN-LAST:event_usersboxMouseClicked
 
     private void usersboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usersboxItemStateChanged
-        ActualizarBoxDocs();
+        ActualizarDocumentosDocs();
     }//GEN-LAST:event_usersboxItemStateChanged
+
+    private void boxelimarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxelimarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxelimarActionPerformed
+
+    private void liberarimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_liberarimpActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            a.elim_min();
+        }
+    }//GEN-LAST:event_liberarimpActionPerformed
+
+    private void elimdelarbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimdelarbolActionPerformed
+        if(list.getpFirst() == null){
+            JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else{
+            String selectuser = (String)usersboxai.getSelectedItem();
+            String selectdoc = (String)boxelimar.getSelectedItem();
+            ListNode user = list.Buscar(selectuser);
+            UserList doc = user.getDocs();
+            ListNode elimdoc = null;
+            ListNode auxf = doc.getpFirst();
+            ListNode auxl = doc.getpLast();
+            while(auxf != null && auxl != null){
+                if(auxf.getNombre().equals(selectdoc)){
+                    elimdoc = auxf;
+                    break;
+                }
+                if(auxl.getNombre().equals(selectdoc)){
+                    elimdoc = auxl;
+                    break;
+                }
+                auxf = auxf.getpNext();
+                auxl = auxl.getpPrev();
+            }
+            if(elimdoc != null){
+                int index = boxelimar.getSelectedIndex();
+                boxelimar.removeItemAt(index);
+                Nodo e = a.BuscarNombre(a.getRoot(), selectdoc);
+                a.elim_select(a.find(a.getRoot(), e.getIndex()));
+            }
+        }
+    }//GEN-LAST:event_elimdelarbolActionPerformed
+
+    private void usersboxaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usersboxaiItemStateChanged
+    }//GEN-LAST:event_usersboxaiItemStateChanged
+
+    private void usersboxaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersboxaiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersboxaiMouseClicked
+
+    private void usersboxaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersboxaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersboxaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -745,6 +846,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ExploradorArchivo;
     private javax.swing.JButton addbutton;
+    private javax.swing.JComboBox<String> boxelimar;
     private javax.swing.JComboBox<String> boxelimuser;
     private javax.swing.JComboBox<String> boxprioridades;
     private javax.swing.JButton browsebutton;
@@ -752,14 +854,15 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JButton deletebutton;
     private javax.swing.JComboBox<String> deletedocbox;
     private javax.swing.JButton deletedocbutton;
+    private javax.swing.JButton elimdelarbol;
+    private javax.swing.JTextPane existusers;
     private javax.swing.JTextField fieldnewname;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
-    private javax.swing.JLabel fondo2;
     private javax.swing.JLabel fondopestana1;
+    private javax.swing.JLabel fondopestana2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -775,6 +878,8 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -786,11 +891,12 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane1;
     private java.awt.Label label1;
+    private javax.swing.JButton liberarimp;
     private javax.swing.JTextField newdocname;
     private javax.swing.JTextField newdocsize;
     private javax.swing.JTextField newdoctype;
@@ -798,5 +904,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JButton printdocbutton;
     private javax.swing.JTextArea userdocs;
     private javax.swing.JComboBox<String> usersbox;
+    private javax.swing.JComboBox<String> usersboxai;
     // End of variables declaration//GEN-END:variables
 }

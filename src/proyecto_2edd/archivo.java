@@ -48,7 +48,7 @@ public class archivo {
             write.close();
             
         }catch(IOException e){
-            System.out.println("Algo anda mal en write");
+            
         }
     }
     
