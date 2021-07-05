@@ -40,7 +40,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         boxprioridades.addItem("prioridad_alta");
         boxelimuser.removeAllItems();
         usersbox.removeAllItems(); 
-        usersboxai.removeAllItems();
         deletedocbox.removeAllItems();
         printdocbox.removeAllItems();
         boxelimar.removeAllItems();
@@ -107,9 +106,9 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        hashuser = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        usersboxai = new javax.swing.JComboBox<>();
         liberarimp = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         elimdelarbol = new javax.swing.JButton();
@@ -418,33 +417,16 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        hashuser.setColumns(20);
+        hashuser.setRows(5);
+        jScrollPane3.setViewportView(hashuser);
+
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 330, 40));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Al eliminar/liberar pase cursor sobre pestañas para actualizar");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
-
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel24.setText("Seleccione Usuario");
-        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 180, 30));
-
-        usersboxai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        usersboxai.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                usersboxaiItemStateChanged(evt);
-            }
-        });
-        usersboxai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usersboxaiMouseClicked(evt);
-            }
-        });
-        usersboxai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usersboxaiActionPerformed(evt);
-            }
-        });
-        jPanel5.add(usersboxai, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 160, 30));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         liberarimp.setText("Liberar Impresora");
         liberarimp.addActionListener(new java.awt.event.ActionListener() {
@@ -452,13 +434,12 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 liberarimpActionPerformed(evt);
             }
         });
-        jPanel5.add(liberarimp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 160, 40));
+        jPanel5.add(liberarimp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 160, 30));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(204, 204, 204));
         jLabel25.setText("Seleccione Documento");
-        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 160, 30));
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 160, 30));
 
         elimdelarbol.setText("Eliminar Documento");
         elimdelarbol.addActionListener(new java.awt.event.ActionListener() {
@@ -466,18 +447,23 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 elimdelarbolActionPerformed(evt);
             }
         });
-        jPanel5.add(elimdelarbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 150, 40));
+        jPanel5.add(elimdelarbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 150, 30));
 
         boxelimar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxelimar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                boxelimarItemStateChanged(evt);
+            }
+        });
         boxelimar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxelimarActionPerformed(evt);
             }
         });
-        jPanel5.add(boxelimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 160, 30));
+        jPanel5.add(boxelimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 160, 30));
 
         fondopestana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2imagenes/fondo proyecto 2.jpeg"))); // NOI18N
-        jPanel5.add(fondopestana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 510));
+        jPanel5.add(fondopestana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 500));
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 520, 180));
 
@@ -513,12 +499,10 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         String data = list.Imprimir();
         existusers.setText(data);
         usersbox.removeAllItems();
-        usersboxai.removeAllItems();
         boxelimuser.removeAllItems();
         ListNode aux = list.getpFirst();
             while(aux != null){
                 usersbox.addItem(aux.getNombre());
-                usersboxai.addItem(aux.getNombre());
                 boxelimuser.addItem(aux.getNombre());
                 aux = aux.getpNext();
             }
@@ -610,7 +594,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
         list.Eliminar(nombre);
         boxelimuser.removeItemAt(index);
         usersbox.removeItemAt(index);
-        usersboxai.removeItemAt(index);
         this.RefreshUsers();
     }//GEN-LAST:event_deletebuttonActionPerformed
 
@@ -671,10 +654,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
                 return;
             }
             long time = this.GetTime();
-            if (docs.Insertar(user, nombre, tamano, tipo, time)){
-                HashNode doc = new HashNode( user.getNombre(),  user.getPrioridad(),  nombre,  tamano,  tipo);
-                table.Insertar(doc);
-            }
+            docs.Insertar(user, nombre, tamano, tipo, time);
             this.ActualizarDocumentosDocs();
         }
         
@@ -713,7 +693,9 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             }else{
                 long t = this.GetTime();
                 a.insertar(doc.getNombre(), doc.getType(), Integer.parseInt(doc.getSize()), (int) t);
-            }
+            } 
+        HashNode docu = new HashNode( user.getNombre(),  user.getPrioridad(),  doc.getNombre(),  doc.getSize(),  doc.getType());
+        table.Insertar(docu);
         boxelimar.addItem(docname);
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame1.getBounds();
@@ -733,9 +715,9 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
             return;
         }else{
-            HashNode aux = table.buscar((String)deletedocbox.getSelectedItem());
-            String user = aux.getUsername();
-            String docname = aux.getDocname();
+            ListNode aux = list.Buscar((String)usersbox.getSelectedItem());
+            String user = aux.getNombre();
+            String docname = (String)deletedocbox.getSelectedItem();
             int index = deletedocbox.getSelectedIndex();
             list.Eliminar(user, docname);
             try{
@@ -786,57 +768,34 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private void elimdelarbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimdelarbolActionPerformed
         if(list.getpFirst() == null){
             JOptionPane.showMessageDialog(this, "Primero debe cargar los usuarios.\n(Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-            return;
         }else{
-            String selectuser = (String)usersboxai.getSelectedItem();
+            hashuser.removeAll();
             String selectdoc = (String)boxelimar.getSelectedItem();
-            ListNode user = list.Buscar(selectuser);
-            UserList doc = user.getDocs();
-            ListNode elimdoc = null;
-            ListNode auxf = doc.getpFirst();
-            ListNode auxl = doc.getpLast();
-            while(auxf != null && auxl != null){
-                if(auxf.getNombre().equals(selectdoc)){
-                    elimdoc = auxf;
-                    break;
-                }
-                if(auxl.getNombre().equals(selectdoc)){
-                    elimdoc = auxl;
-                    break;
-                }
-                auxf = auxf.getpNext();
-                auxl = auxl.getpPrev();
-            }
-            if(elimdoc != null){
+            HashNode docdata = table.buscar(selectdoc);
+            if(docdata != null){
                 int index = boxelimar.getSelectedIndex();
                 boxelimar.removeItemAt(index);
-                Nodo e = a.BuscarNombre(a.getRoot(), selectdoc);
-                if(e != null){
+                Nodo e = a.BuscarNombre(a.getRoot(), docdata.getDocname());
+                if(e != null){ 
                     a.elim_select(a.find(a.getRoot(), e.getIndex()));
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "El documento no pertenece al usuario.\n(Revise Pestaña Usuarios)","ALERTA", JOptionPane.WARNING_MESSAGE);
-                return;
             }
-            
         }
     }//GEN-LAST:event_elimdelarbolActionPerformed
-
-    private void usersboxaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersboxaiMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usersboxaiMouseClicked
-
-    private void usersboxaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersboxaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usersboxaiActionPerformed
-
-    private void usersboxaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usersboxaiItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usersboxaiItemStateChanged
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void boxelimarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxelimarItemStateChanged
+        String selectdoc = (String)boxelimar.getSelectedItem();
+        if(selectdoc != null){
+            HashNode docdata = table.buscar(selectdoc);
+            hashuser.setText("Documento enviado por " + docdata.getUsername());
+        }
+    }//GEN-LAST:event_boxelimarItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -891,6 +850,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel fondopestana1;
     private javax.swing.JLabel fondopestana2;
+    private javax.swing.JTextArea hashuser;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -909,7 +869,6 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -925,6 +884,7 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private java.awt.Label label1;
     private javax.swing.JButton liberarimp;
@@ -935,6 +895,5 @@ public class Interfaz_Proyecto2 extends javax.swing.JFrame {
     private javax.swing.JButton printdocbutton;
     private javax.swing.JTextArea userdocs;
     private javax.swing.JComboBox<String> usersbox;
-    private javax.swing.JComboBox<String> usersboxai;
     // End of variables declaration//GEN-END:variables
 }
