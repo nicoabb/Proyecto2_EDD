@@ -1,4 +1,4 @@
-# Proyecto 1 - Estructuras de Datos
+# Proyecto 2 - Estructuras de Datos
 
 Realizado por [Gabriella Suarez](https://github.com/g-suarez), [Christian Behrens](https://github.com/cbehrensunimet) y [Nicolás Briceño](https://github.com/nicoabb)
 
